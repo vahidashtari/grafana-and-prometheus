@@ -3,13 +3,13 @@ FROM grafana/grafana-oss
 USER root
 
 # Copy the script into the container
-COPY GrafanaAndPrometheus.sh /GrafanaAndPrometheus.sh
+COPY Grafanaandprometheus.sh /Grafanaandprometheus.sh
 
 # Make it executable
-RUN chmod +x /GrafanaAndPrometheus.sh
+RUN chmod +x /Grafanaandprometheus.sh
 
 # Run the script (installs/configures Grafana/Prometheus)
-RUN /GrafanaAndPrometheus.sh
+RUN /Grafanaandprometheus.sh
 
 # Optionally create a sudo user too
 RUN apk add sudo bash \
