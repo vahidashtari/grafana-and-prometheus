@@ -1,16 +1,17 @@
 version: '3.8'
 
 services:
-  grafana:
+  monitoring:
     build: .
     ports:
-      - "3000:3000"
+      - "3000:3000"   # Grafana
+      - "9090:9090"   # Prometheus
     volumes:
       - grafana-data:/var/lib/grafana
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_SERVER_ROOT_URL=http://localhost:3000
+      - GF_SERVER_ROOT_URL=${SERVICE_FQDN_GRAFANA}
+      - GF_SERVER_DOMAIN=${SERVICE_FQDN_GRAFANA}
+      - GF_SECURITY_ADMIN_PASSWORD=${SERVICE_PASSWORD_GRAFANA}
 
 volumes:
   grafana-data:
-
