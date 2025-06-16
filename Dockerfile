@@ -8,8 +8,6 @@ COPY Grafanaandprometheus.sh /Grafanaandprometheus.sh
 # Make it executable
 RUN chmod +x /Grafanaandprometheus.sh
 
-# Run the script (installs/configures Grafana/Prometheus)
-RUN /Grafanaandprometheus.sh
 
 # Optionally create a sudo user too
 RUN apk add sudo bash \
@@ -19,3 +17,5 @@ RUN apk add sudo bash \
     && sh -c 'echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers'
 
 USER admin
+
+RUN /Grafanaandprometheus.sh
